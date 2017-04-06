@@ -246,6 +246,36 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chloe.MySql\Chloe.MySql.csproj">
+      <Project>{d2f4970b-35ba-4855-befa-75adb44bc196}</Project>
+      <Name>Chloe.MySql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chloe.Oracle\Chloe.Oracle.csproj">
+      <Project>{ae9ac627-1674-47c9-9de4-a80664c5ee0a}</Project>
+      <Name>Chloe.Oracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chloe.SQLite\Chloe.SQLite.csproj">
+      <Project>{a89888e2-7ee1-4490-b860-d6dbf5601958}</Project>
+      <Name>Chloe.SQLite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chloe.SqlServer\Chloe.SqlServer.csproj">
+      <Project>{c77e3e54-36cf-4ae9-bad7-6c5c524fffcf}</Project>
+      <Name>Chloe.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chloe\Chloe.csproj">
+      <Project>{251cae99-2279-4b09-afe1-123c69030457}</Project>
+      <Name>Chloe</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartCommon\SmartCommon.csproj">
+      <Project>{9DF39A9A-7627-4F24-9177-EA13E2D6C598}</Project>
+      <Name>SmartCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartEntity\SmartEntity.csproj">
+      <Project>{6762489d-893c-4ccd-8657-2771f63c4027}</Project>
+      <Name>SmartEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
