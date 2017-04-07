@@ -14,10 +14,7 @@ namespace SmartCommon.ConvertHelper
     /// 字符串转换
     /// </summary>
     public static class ConvertHelper
-    {
-        //MD5加密运算字符串
-        public static readonly string MD5SECRET = "L82V6ZVD6JMD5";
-
+    {       
         /// <summary>数据库空时间 </summary>
         public static readonly DateTime NullSqlDateTime = ((DateTime)System.Data.SqlTypes.SqlDateTime.Null);
         public static bool ToBoolean(this string source)
@@ -207,19 +204,7 @@ namespace SmartCommon.ConvertHelper
             if (!string.IsNullOrWhiteSpace(instance) && !Enum.TryParse(instance.Trim(), true, out convertedValue))
                 convertedValue = defaultValue;
             return convertedValue;
-        }
-        /// <summary> 将取输入的字符串的md5值</summary>
-        /// <param name="inputstr">输入的字符串</param>
-        /// <param name="otherstr">参与运算的字符</param>
-        /// <returns></returns>
-        public static string ToMD5(this string s, string otherstr)
-        {
-            string value = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(s + otherstr, "md5");
-            if (!string.IsNullOrEmpty(value))
-                return value;
-            else
-                return null;
-        }
+        }           
         /// <summary> 截取指定字符串长度（自动区分中英文）</summary>
         /// <param name="stringToSub">待截取的字符串</param>
         /// <param name="length">需要截取的长度</param>
@@ -342,19 +327,7 @@ namespace SmartCommon.ConvertHelper
                 else
                     return s.Substring(0, len);
             }
-        }
-
-        public static string GetMD5(string input, string charset)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] data = md5.ComputeHash(Encoding.GetEncoding(charset).GetBytes(input));
-            StringBuilder builder = new StringBuilder(32);
-            for (int i = 0; i < data.Length; i++)
-            {
-                builder.Append(data[i].ToString("x2"));
-            }
-            return builder.ToString();
-        }
+        }     
 
         /// Int转化
         /// <summary>
