@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEntity", "SmartEntity\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCommon", "SmartCommon\SmartCommon.csproj", "{9DF39A9A-7627-4F24-9177-EA13E2D6C598}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCache", "SmartCache\SmartCache.csproj", "{38C2FEAC-85BC-489A-BABB-B474CEE9024A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{9DF39A9A-7627-4F24-9177-EA13E2D6C598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DF39A9A-7627-4F24-9177-EA13E2D6C598}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DF39A9A-7627-4F24-9177-EA13E2D6C598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C2FEAC-85BC-489A-BABB-B474CEE9024A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C2FEAC-85BC-489A-BABB-B474CEE9024A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C2FEAC-85BC-489A-BABB-B474CEE9024A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C2FEAC-85BC-489A-BABB-B474CEE9024A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

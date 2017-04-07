@@ -11,11 +11,11 @@ namespace Chloe.SqlServer
     public class DefaultDbConnectionFactory : IDbConnectionFactory
     {
         string _connString;
-        public DefaultDbConnectionFactory(string connString)
+        public DefaultDbConnectionFactory(string connString, string dataBaseName)
         {
             Utils.CheckNull(connString, "connString");
 
-            this._connString = connString;
+            this._connString = string.Format(connString, dataBaseName);
         }
         public IDbConnection CreateConnection()
         {

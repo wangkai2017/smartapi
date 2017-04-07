@@ -17,8 +17,8 @@ namespace Chloe.SqlServer
     public class MsSqlContext : DbContext
     {
         DbContextServiceProvider _dbContextServiceProvider;
-        public MsSqlContext(string connString)
-            : this(new DefaultDbConnectionFactory(connString))
+        public MsSqlContext(string connString, string dataBaseName)
+            : this(new DefaultDbConnectionFactory(connString, dataBaseName))
         {
         }
 
