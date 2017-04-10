@@ -10,6 +10,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SmartCommon.ConstHelper;
+using System.Threading.Tasks;
+using System.Threading;
+using SmartCache;
 
 namespace WebApp.Controllers
 {
@@ -22,14 +25,18 @@ namespace WebApp.Controllers
             var entity = context.Query<Students>();
             var t = entity.Where(e => e.Id == 1).FirstOrDefault();
             var str = SerializerHelper.ObjectToJson(t);
-            ViewBag.Str = str;
             
+            var obj = LocalCacheHelper.GetCache("key");
+            LocalCacheHelper.SetCache("key", "value", TimeSpan.FromMinutes(10));
+
+            ViewBag.Str = str;
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            var obj = LocalCacheHelper.GetCache("key");
+            ViewBag.Message = (string)obj;
 
             return View();
         }

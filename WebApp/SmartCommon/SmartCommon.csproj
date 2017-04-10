@@ -50,6 +50,7 @@
     <Compile Include="ConvertHelper\EncryptionAndDecryptHelper.cs" />
     <Compile Include="DbHelper\DbHelper.cs" />
     <Compile Include="EnumHelper\EnumHelper.cs" />
+    <Compile Include="Enums\CacheEnum.cs" />
     <Compile Include="Enums\NoticyEnum.cs" />
     <Compile Include="HttpHelper\HttpHelper.cs" />
     <Compile Include="HttpHelper\Toolkit.cs" />
