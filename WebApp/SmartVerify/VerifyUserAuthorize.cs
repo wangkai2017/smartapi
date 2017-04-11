@@ -12,11 +12,17 @@ namespace SmartVerify
         public override void OnAuthorization(AuthorizationContext context)
         {
             base.OnAuthorization(context);
-            var retUrl = context.HttpContext.Request.QueryString["returnUrl"];
+            return;
+            var returnUrl = context.HttpContext.Request.QueryString["returnUrl"];
             //验证用户
-            
-            
-
+            var user = UserHelper.Instance.GetUser();
+            if (user != null && user.UserId > 0)
+            {
+                return;            
+            }
+            context.HttpContext.Response.Redirect(SmartConstArgs.SmartUrl + "Login/Index" + "?returnUrl=" + returnUrl);
+            context.Result = new HttpUnauthorizedResult();
+            return;
         }
     }
 }

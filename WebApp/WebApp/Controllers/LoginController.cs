@@ -1,5 +1,6 @@
 ﻿using SmartCache;
 using SmartCommon.LogHelper;
+using SmartEntity.RequestEntity;
 using SmartVerify;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult LoginIn()
+        public ActionResult LoginIn(LoginRequestEntity entity)
         {            
             return View();
         }

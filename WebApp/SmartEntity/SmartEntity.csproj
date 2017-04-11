@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Students.cs" />
+    <Compile Include="RequestEntity\LoginRequestEntity.cs" />
+    <Compile Include="T_Students.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T_Users.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chloe.MySql\Chloe.MySql.csproj">
@@ -64,6 +66,9 @@
       <Project>{251cae99-2279-4b09-afe1-123c69030457}</Project>
       <Name>Chloe</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ResponseEntity\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

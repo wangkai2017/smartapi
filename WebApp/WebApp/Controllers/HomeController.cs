@@ -13,16 +13,18 @@ using SmartCommon.ConstHelper;
 using System.Threading.Tasks;
 using System.Threading;
 using SmartCache;
+using WebApp.Base;
+using SmartCommon.ConvertHelper;
 
 namespace WebApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         /* DbContext 是非线程安全的，正式使用不能设置为 static */
         private MsSqlContext context = new MsSqlContext(DbHelper.ConnectionString, DatabaseNameConst.DBTest);
         public ActionResult Index()
         {
-            var entity = context.Query<Students>();
+            var entity = context.Query<T_Students>();
             var t = entity.Where(e => e.Id == 1).FirstOrDefault();
             var str = SerializerHelper.ObjectToJson(t);
             
@@ -42,8 +44,9 @@ namespace WebApp.Controllers
         }
 
         public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";            
+        {                                  
+
+            ViewBag.Message = "";            
             return View();
         }
     }

@@ -52,7 +52,6 @@ namespace SmartVerify
                     return user;
                 }
                 //通过token获取用户信息
-
                 string userJson = string.Empty;
                 
                 if (!string.IsNullOrEmpty(userJson))
