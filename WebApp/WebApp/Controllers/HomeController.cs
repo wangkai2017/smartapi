@@ -28,7 +28,7 @@ namespace WebApp.Controllers
             
             var obj = LocalCacheHelper.GetCache("key");
             LocalCacheHelper.SetCache("key", "value", TimeSpan.FromMinutes(10));
-
+            
             ViewBag.Str = str;
             return View();
         }
@@ -43,8 +43,7 @@ namespace WebApp.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.Message = "Your contact page.";            
             return View();
         }
     }
