@@ -39,7 +39,7 @@ namespace WebApp.Controllers
         {            
             return View();
         }
-        
+
         public ActionResult LoginOut()
         {
             UserHelper.Instance.SignOut();

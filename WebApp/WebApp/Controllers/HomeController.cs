@@ -1,24 +1,15 @@
 ﻿using Chloe.SqlServer;
 using SmartCommon.DbHelper;
-using SmartCommon.LogHelper;
 using SmartCommon.SerializerHelper;
 using SmartEntity;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using SmartCommon.ConstHelper;
-using System.Threading.Tasks;
-using System.Threading;
 using SmartCache;
-using WebApp.Base;
-using SmartCommon.ConvertHelper;
 
 namespace WebApp.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         /* DbContext 是非线程安全的，正式使用不能设置为 static */
         private MsSqlContext context = new MsSqlContext(DbHelper.ConnectionString, DatabaseNameConst.DBTest);
