@@ -26,9 +26,9 @@ namespace SmartCommon.LogHelper
         /// <param name="requestParams">查询请求参数</param>
         /// <param name="responseStr">返回值</param>
         /// <param name="noticyType">消息通知的方式None = 0,Mail = 1</param>
-        public static void WriteErrorLog(Exception exception, string extContent = "", string requestParams = "", string responseStr = "", NoticyEnum noticyType = NoticyEnum.None)
+        public static void WriteErrorLog(Exception ex, string extContent = "", string requestParams = "", string responseStr = "", NoticyEnum noticyType = NoticyEnum.None)
         {
-            WriteLog(exception.Message + "\n" + exception.StackTrace, extContent: extContent, requestParams: requestParams, responseStr: responseStr, noticyType: noticyType, level: LevelEnum.Error);
+            WriteLog(ex.Message + "\n" + ex.StackTrace, extContent: extContent, requestParams: requestParams, responseStr: responseStr, noticyType: noticyType, level: LevelEnum.Error);
         }
         /// <summary>记录日志信息</summary>
         /// <param name="logContent">日志内容</param>

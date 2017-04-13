@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartCommon.LogHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,5 +18,20 @@ namespace WebApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_EndRequest()
+        {
+            var statusCode = Context.Response.StatusCode;
+            var ex = Context.Request.RequestContext.HttpContext.Error;
+            if (statusCode == 400 || statusCode == 500)
+            {
+                Response.Clear();
+
+                LogService.WriteErrorLog(ex);
+
+                Response.RedirectToRoutePermanent("Error");
+            }
+        }
+
     }
 }

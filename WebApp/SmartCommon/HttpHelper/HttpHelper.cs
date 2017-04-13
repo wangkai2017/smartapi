@@ -19,10 +19,10 @@ namespace SmartCommon.HttpHelper
         /// <param name="m_Doc"></param>
         /// <param name="m_QuestURL"></param>
         /// <returns></returns>
-        public static string GetRequest(XmlDocument m_Doc, string m_QuestURL)
+        public static string GetRequest(XmlDocument m_Doc, string requestUrl)
         {
             string error = string.Empty;
-            return GetRequest(m_QuestURL, m_Doc.OuterXml, "UTF-8", 100000, out error);
+            return PostRequest(requestUrl, m_Doc.OuterXml, "UTF-8", 100000, out error);
         }
         #endregion
 
@@ -33,9 +33,9 @@ namespace SmartCommon.HttpHelper
         /// <param name="m_Doc"></param>
         /// <param name="m_QuestURL"></param>
         /// <returns></returns>
-        public static string GetRequest(string requestXml, string m_QuestURL, out string error)
+        public static string PostRequest(string requestXml, string requestUrl, out string error)
         {
-            return GetRequest(m_QuestURL, requestXml, "UTF-8", 100000, out error);
+            return PostRequest(requestUrl, requestXml, "UTF-8", 100000, out error);
         }
 
         /// <summary>
@@ -44,9 +44,9 @@ namespace SmartCommon.HttpHelper
         /// <param name="m_Doc"></param>
         /// <param name="m_QuestURL"></param>
         /// <returns></returns>
-        public static string GetRequest(string requestXml, string m_QuestURL, string CodingType, out string error)
+        public static string PostRequest(string requestXml, string requestUrl, string CodingType, out string error)
         {
-            return GetRequest(m_QuestURL, requestXml, CodingType, 100000, out error);
+            return PostRequest(requestUrl, requestXml, CodingType, 100000, out error);
         }
 
         /// <summary>
@@ -55,16 +55,16 @@ namespace SmartCommon.HttpHelper
         /// <param name="m_Doc"></param>
         /// <param name="m_QuestURL"></param>
         /// <returns></returns>
-        public static string GetRequest(string requestXml, string m_QuestURL)
+        public static string PostRequest(string requestXml, string requestUrl)
         {
             string error = string.Empty;
-            return GetRequest(m_QuestURL, requestXml, "UTF-8", 100000, out error);
+            return PostRequest(requestUrl, requestXml, "UTF-8", 100000, out error);
         }
 
-        public static string GetRequest(string requestXml, string m_QuestURL, string encoding)
+        public static string PostRequest(string requestXml, string requestUrl, string encoding)
         {
             string error = string.Empty;
-            return GetRequest(m_QuestURL, requestXml, encoding, 100000, out error);
+            return PostRequest(requestUrl, requestXml, encoding, 100000, out error);
         }
 
         /// <summary>
@@ -74,10 +74,10 @@ namespace SmartCommon.HttpHelper
         /// <param name="m_QuestURL">请求地址</param> 
         /// <param name="timeout">超时时间</param>
         /// <returns></returns>
-        public static string GetRequest(string requestXml, string m_QuestURL, int timeout)
+        public static string PostRequest(string requestXml, string requestUrl, int timeout)
         {
             string error = string.Empty;
-            string result = GetRequest(m_QuestURL, requestXml, "UTF-8", timeout, out error);
+            string result = PostRequest(requestUrl, requestXml, "UTF-8", timeout, out error);
             if (!string.IsNullOrWhiteSpace(error))
             {
                 result = "error";
@@ -85,34 +85,7 @@ namespace SmartCommon.HttpHelper
 
             return result;
         }
-        #region 不接收返回参数的Post请求
-        /// <summary>
-        /// 不接收返回参数的Post请求
-        /// </summary>
-        /// <param name="requestXml"></param>
-        /// <param name="m_QuestURL"></param>
-        public static void GetRequestNoResponse(string requestXml, string m_QuestURL)
-        {
-            try
-            {
-                HttpWebRequest m_Request = (HttpWebRequest)WebRequest.Create(m_QuestURL);
-                //相应请求的参数
-                byte[] data = Encoding.GetEncoding("UTF-8").GetBytes(requestXml);
-                m_Request.Method = "Post";
-                m_Request.ContentType = "application/x-www-form-urlencoded";
-                m_Request.ContentLength = data.Length;
-                m_Request.Timeout = 100000;
-                //请求流
-                Stream requestStream = m_Request.GetRequestStream();
-                requestStream.Write(data, 0, data.Length);
-                requestStream.Close();
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-        #endregion
+        
         #endregion
 
         #region  GET请求
@@ -121,9 +94,9 @@ namespace SmartCommon.HttpHelper
         /// </summary>
         /// <param name="m_QuestURL">请求地址</param>
         /// <returns></returns>
-        public static string GetRequest(string m_QuestURL)
+        public static string GetRequest(string requestUrl)
         {
-            return GetRequest(m_QuestURL, Encoding.UTF8, 1000000);
+            return GetRequest(requestUrl, Encoding.UTF8, 1000000);
         }
 
         /// <summary>
@@ -132,9 +105,9 @@ namespace SmartCommon.HttpHelper
         /// <param name="m_QuestURL">请求地址</param>
         /// <param name="encode">编码，例如：UTF-8</param>
         /// <returns></returns>
-        public static string GetRequest(string m_QuestURL, Encoding encode)
+        public static string GetRequest(string requestUrl, Encoding encode)
         {
-            return GetRequest(m_QuestURL, encode, 1000000);
+            return GetRequest(requestUrl, encode, 1000000);
         }
 
         /// <summary>
@@ -144,7 +117,7 @@ namespace SmartCommon.HttpHelper
         /// <param name="encode">编码，例如：UTF-8</param>
         /// <param name="timeout">请求超时时间，单位：MS</param>
         /// <returns></returns>
-        public static string GetRequest(string m_QuestURL, Encoding encode, int timeout)
+        public static string GetRequest(string requestUrl, Encoding encode, int timeout)
         {
             string result = string.Empty;
             HttpWebRequest request = null;
@@ -153,7 +126,7 @@ namespace SmartCommon.HttpHelper
             Stopwatch stopWatch = Stopwatch.StartNew();
             try
             {
-                request = (HttpWebRequest)HttpWebRequest.Create(m_QuestURL);
+                request = (HttpWebRequest)HttpWebRequest.Create(requestUrl);
                 request.Timeout = timeout;
                 request.ServicePoint.Expect100Continue = false;
                 avReader = new StreamReader(request.GetResponse().GetResponseStream(), encode);
@@ -203,7 +176,7 @@ namespace SmartCommon.HttpHelper
         /// <param name="timeout">请求超时时间，单位毫秒</param>
         /// <param name="error">当请求出现异常时，记录异常消息</param>
         /// <returns>以字符串格式返回响应结果</returns>
-        public static string GetRequest(string requestUrl, string requestData, string codingType, int timeout, out string error)
+        public static string PostRequest(string requestUrl, string requestData, string codingType, int timeout, out string error)
         {
             string result = "";
             error = "";
@@ -266,76 +239,5 @@ namespace SmartCommon.HttpHelper
             return Toolkit.ClearSpecialCharForReq(result);
         }
 
-        /// <summary>
-        /// 发送HTTP请求（METHOD：POST）
-        /// </summary>
-        /// <param name="requestUrl">请求地址</param>
-        /// <param name="requestData">请求参数</param>
-        /// <param name="codingType">编码方式</param>
-        /// <param name="timeout">请求超时时间，单位毫秒</param>
-        /// <param name="error">当请求出现异常时，记录异常消息</param>
-        /// <returns>以字符串格式返回响应结果</returns>
-        public static string GetRequestJson(string requestUrl, string requestData, string codingType, int timeout, out string error)
-        {
-            string result = "";
-            error = "";
-            long elapsed = 0;
-            string responseData = string.Empty;
-            //Post请求地址
-            Stopwatch stopWatch = Stopwatch.StartNew();
-            try
-            {
-                HttpWebRequest m_Request = (HttpWebRequest)WebRequest.Create(requestUrl);
-                //相应请求的参数
-                byte[] data = Encoding.GetEncoding(codingType).GetBytes(requestData);
-                m_Request.Method = "Post";
-                m_Request.ContentType = "application/json; charset=utf-8";
-                m_Request.ContentLength = data.Length;
-                m_Request.Timeout = timeout;
-                m_Request.ServicePoint.Expect100Continue = false;
-                //请求流
-                Stream requestStream = m_Request.GetRequestStream();
-                requestStream.Write(data, 0, data.Length);
-                requestStream.Close();
-                //响应流
-                HttpWebResponse m_Response = (HttpWebResponse)m_Request.GetResponse();
-                Stream responseStream = m_Response.GetResponseStream();
-                StreamReader streamReader = new StreamReader(responseStream, Encoding.GetEncoding(codingType));
-                //获取返回的信息
-                result = streamReader.ReadToEnd();
-                streamReader.Close();
-                responseStream.Close();
-                stopWatch.Stop();
-                elapsed = stopWatch.ElapsedMilliseconds;
-            }
-            catch (WebException ex)
-            {
-                result = "";
-                stopWatch.Stop();
-                elapsed = stopWatch.ElapsedMilliseconds;
-                if (ex.Status == WebExceptionStatus.Timeout)
-                {
-                    error = string.Format("请求超时[{0}],请求地址：{1}", elapsed, requestUrl);
-                }
-                else
-                {
-                    error = string.Format("{0},请求地址：{1}", ex.Message, requestUrl);
-                }
-                responseData = ex.ToString();
-            }
-            catch (Exception ex)
-            {
-                result = "";
-                error = string.Format("请求接口异常,请求地址：{0}", requestUrl);
-                stopWatch.Stop();
-                elapsed = stopWatch.ElapsedMilliseconds;
-                responseData = ex.ToString();
-            }
-            if (string.IsNullOrWhiteSpace(responseData))
-            {
-                responseData = result;
-            }
-            return Toolkit.ClearSpecialCharForReq(result);
-        }
     }
 }

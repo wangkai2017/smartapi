@@ -329,17 +329,5 @@ namespace SmartCommon.ConvertHelper
             }
         }     
 
-        /// Int转化
-        /// <summary>
-        /// Int转化
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static int ToInt(this string str)
-        {
-            int result = 0;
-            int.TryParse(str, out result);
-            return result;
-        }
     }
 }
