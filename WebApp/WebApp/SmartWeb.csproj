@@ -251,6 +251,10 @@
       <Project>{251cae99-2279-4b09-afe1-123c69030457}</Project>
       <Name>Chloe</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SmartBusiness\SmartBusiness.csproj">
+      <Project>{E0276250-A251-4EAB-B1C2-549BB2EA1757}</Project>
+      <Name>SmartBusiness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SmartCache\SmartCache.csproj">
       <Project>{38c2feac-85bc-489a-babb-b474cee9024a}</Project>
       <Name>SmartCache</Name>
@@ -262,6 +266,10 @@
     <ProjectReference Include="..\SmartEntity\SmartEntity.csproj">
       <Project>{6762489d-893c-4ccd-8657-2771f63c4027}</Project>
       <Name>SmartEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartExternalEntity\SmartExternalEntity.csproj">
+      <Project>{D8CB2E75-4637-439B-996D-8147995F9F7B}</Project>
+      <Name>SmartExternalEntity</Name>
     </ProjectReference>
     <ProjectReference Include="..\SmartVerify\SmartVerify.csproj">
       <Project>{45860817-9C84-4FB9-A9B3-7C71C782C732}</Project>

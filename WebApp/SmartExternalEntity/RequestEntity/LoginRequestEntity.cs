@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartEntity.RequestEntity
+namespace SmartExternalEntity.RequestEntity
 {
     public class LoginRequestEntity
     {

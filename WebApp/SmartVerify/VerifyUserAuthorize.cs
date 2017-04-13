@@ -12,7 +12,6 @@ namespace SmartVerify
         public override void OnAuthorization(AuthorizationContext context)
         {
             base.OnAuthorization(context);
-            return;
             var returnUrl = context.HttpContext.Request.QueryString["returnUrl"];
             //验证用户
             var user = UserHelper.Instance.GetUser();

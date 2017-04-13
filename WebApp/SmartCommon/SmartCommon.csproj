@@ -60,7 +60,9 @@
     <Compile Include="SerializerHelper\SerializerHelper.cs" />
     <Compile Include="SingleTonHelper\SingleTon.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="说明.txt" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
