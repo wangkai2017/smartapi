@@ -12,9 +12,33 @@ namespace SmartCommon.Enums
     /// </summary>
     public enum NoticyEnum
     {
+        /// <summary>
+        /// 不发送
+        /// </summary>
         [Description("不发送")]
         None = 0,
+        /// <summary>
+        /// 发送邮件
+        /// </summary>
         [Description("发送邮件")]
         Mail = 1
+    }
+    public enum LevelEnum
+    {
+        /// <summary>
+        /// 一般
+        /// </summary>
+        [Description("一般")]
+        Info = 0,
+        /// <summary>
+        /// 警告
+        /// </summary>
+        [Description("警告")]
+        Warnning = 1,
+        /// <summary>
+        /// 错误
+        /// </summary>
+        [Description("错误")]
+        Error = 2
     }
 }

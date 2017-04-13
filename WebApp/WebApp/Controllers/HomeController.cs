@@ -1,28 +1,25 @@
-﻿using Chloe.SqlServer;
-using SmartCommon.DbHelper;
-using SmartCommon.SerializerHelper;
-using SmartEntity;
-using System;
+﻿using SmartCommon.SerializerHelper;
 using System.Web.Mvc;
-using SmartCommon.ConstHelper;
 using SmartCache;
+using SmartIBusiness;
 using SmartBusiness;
 
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        
+
         public ActionResult Index()
         {
-            var studentBusiness = new StudentsBusiness();
+            IStudentsBusiness studentBusiness = new StudentsBusiness();
 
             var list = studentBusiness.GetStudentList();
             var str = SerializerHelper.ObjectToJson(list);
-            
-            var obj = LocalCacheHelper.GetCache("key");
-            LocalCacheHelper.SetCache("key", "value", TimeSpan.FromMinutes(10));
-            
+
+
+            //var obj = LocalCacheHelper.GetCache("key");
+            //LocalCacheHelper.SetCache("key", "value", TimeSpan.FromMinutes(10));
+
             ViewBag.Str = str;
             return View();
         }
@@ -36,9 +33,9 @@ namespace WebApp.Controllers
         }
 
         public ActionResult Contact()
-        {                                  
+        {
 
-            ViewBag.Message = "";            
+            ViewBag.Message = "";
             return View();
         }
     }
