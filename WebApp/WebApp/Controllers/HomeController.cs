@@ -11,9 +11,9 @@ namespace WebApp.Controllers
 
         public ActionResult Index()
         {
-            IStudentsBusiness studentBusiness = new StudentsBusiness();
+            IUsersBusiness userBusiness = new UsersBusiness();
 
-            var list = studentBusiness.GetStudentList();
+            var list = userBusiness.GetUserList();
             var str = SerializerHelper.ObjectToJson(list);
 
 

@@ -15,14 +15,14 @@ namespace SmartCommon.ConvertHelper
         //矢量，矢量可以为空  
         private const string sIV = "ccad6X+aPLw=";
         //构造一个对称算法  
-        private SymmetricAlgorithm mCSP = new TripleDESCryptoServiceProvider();
+        private static SymmetricAlgorithm mCSP = new TripleDESCryptoServiceProvider();
         public EncryptionAndDecryptHelper() { }
 
         #region 加密
         /// <summary> 加密字符串 </summary>
         /// <param name="Value">输入的字符串</param>  
         /// <returns>加密后的字符串</returns>  
-        public string EncryptString(string Value)
+        public static string EncryptString(string Value)
         {
             ICryptoTransform ct;
             MemoryStream ms;
@@ -31,9 +31,9 @@ namespace SmartCommon.ConvertHelper
             mCSP.Key = Convert.FromBase64String(sKey);
             mCSP.IV = Convert.FromBase64String(sIV);
             //指定加密的运算模式  
-            mCSP.Mode = System.Security.Cryptography.CipherMode.ECB;
+            mCSP.Mode = CipherMode.ECB;
             //获取或设置加密算法的填充模式  
-            mCSP.Padding = System.Security.Cryptography.PaddingMode.PKCS7;
+            mCSP.Padding = PaddingMode.PKCS7;
             ct = mCSP.CreateEncryptor(mCSP.Key, mCSP.IV);
             byt = Encoding.UTF8.GetBytes(Value);
             ms = new MemoryStream();
@@ -49,7 +49,7 @@ namespace SmartCommon.ConvertHelper
         /// <summary> 解密字符串  </summary>
         /// <param name="Value">加过密的字符串</param>  
         /// <returns>解密后的字符串</returns>  
-        public string DecryptString(string Value)
+        public static string DecryptString(string Value)
         {
             ICryptoTransform ct;
             MemoryStream ms;

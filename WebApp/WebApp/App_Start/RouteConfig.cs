@@ -19,11 +19,7 @@ namespace WebApp
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "Error",
-                url: "Error/{action}",
-                defaults: new { controller = "Error", action = "Index" }
-            );
+           
         }
     }
 }

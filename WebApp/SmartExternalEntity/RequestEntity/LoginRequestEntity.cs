@@ -10,6 +10,7 @@ namespace SmartExternalEntity.RequestEntity
     {
         public string LoginUserName { get; set; }
         public string LoginPwd { get; set; }
-        public string IsRemeberPwd { get; set; }
+        public bool IsRemeberPwd { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }

@@ -79,5 +79,9 @@ namespace SmartVerify
             token = HttpContext.Current.Request[SmartConstArgs.Token];
             return token;
         }
+        public void CacheUser(string value)
+        {
+            CookieHelper.SetCookie(SmartConstArgs.SmartUser,value);
+        }
     }
 }
